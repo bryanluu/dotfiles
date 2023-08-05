@@ -1,0 +1,221 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+alt+e ctrl+alt+j",
+    "command": "workbench.action.joinTwoGroups"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "editor.action.joinLines"
+  },
+  {
+    "key": "ctrl+alt+a ctrl+alt+b",
+    "command": "atlascode.views.bb.pullrequestsTreeView.focus"
+  },
+  {
+    "key": "ctrl+alt+a ctrl+alt+j",
+    "command": "atlascode.views.jira.customJql.focus"
+  },
+  {
+    "key": "ctrl+t ctrl+f",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+t ctrl+t",
+    "command": "workbench.action.quickOpenTerm"
+  },
+  {
+    "key": "ctrl+alt+u ctrl+alt+u",
+    "command": "editor.action.transformToUppercase"
+  },
+  {
+    "key": "ctrl+alt+l ctrl+alt+l",
+    "command": "editor.action.transformToLowercase"
+  },
+  {
+    "key": "ctrl+alt+e ctrl+alt+right",
+    "command": "workbench.action.moveEditorToRightGroup"
+  },
+  {
+    "key": "ctrl+alt+k ctrl+alt+t",
+    "command": "calva.toggleBetweenImplAndTest"
+  },
+  {
+    "key": "ctrl+alt+space j",
+    "command": "joyride.runUserScript",
+    "args": "javadoc.cljs"
+  },
+  {
+    "key": "ctrl+alt+space /",
+    "command": "joyride.runUserScript",
+    "args": "clojuredocs.cljs"
+  },
+  {
+    "key": "ctrl+alt+b q",
+    "command": "joyride.runUserScript",
+    "args": "qa_repl.cljs"
+  },
+  {
+    "key": "ctrl+alt+b p",
+    "command": "joyride.runUserScript",
+    "args": "prod_repl.cljs"
+  },
+  {
+    "key": "ctrl+alt+n ctrl+alt+s",
+    "command": "joyride.runUserScript",
+    "args": "ns.cljs"
+  },
+  {
+    "key": "ctrl+alt+d ctrl+alt+t",
+    "command": "joyride.runUserScript",
+    "args": "tap.cljs"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "joyride.runUserScript",
+    "args": "ignore_form.cljs",
+    "when": "!editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|scheme|lisp/"
+  },
+  {
+    "key": "ctrl+alt+e ctrl+alt+w",
+    "command": "workbench.action.closeOtherEditors"
+  },
+  {
+    "key": "ctrl+alt+z",
+    "command": "notifications.clearAll"
+  },
+  {
+    "key": "alt+home",
+    "command": "paredit.openList",
+    "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+  },
+  {
+    "key": "ctrl+home",
+    "command": "-paredit.openList",
+    "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+  },
+  {
+    "key": "ctrl+alt+c z",
+    "command": "clojureLsp.refactor.cleanNs"
+  },
+  {
+    "key": "ctrl+alt+c ctrl+alt+q",
+    "command": "calva.disconnect"
+  },
+  {
+    "key": "ctrl+alt+c ctrl+alt+k",
+    "command": "calva.clearReplHistory"
+  },
+  {
+    "key": "ctrl+alt+k up",
+    "command": "workbench.action.moveEditorToAboveGroup"
+  },
+  {
+    "key": "ctrl+alt+k down",
+    "command": "workbench.action.moveEditorToBelowGroup"
+  },
+  {
+    "key": "ctrl+shift+g l",
+    "command": "gitlens.toggleLineBlame"
+  },
+  {
+    "key": "ctrl+shift+g z",
+    "command": "gitlens.toggleZenMode"
+  },
+  {
+    "key": "alt+i e",
+    "command": "emojisense.quickEmoji",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "-emojisense.quickEmoji",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+i t",
+    "command": "emojisense.quickEmojiTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "-emojisense.quickEmojiTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+i alt+t",
+    "command": "emojisense.quickEmojitextTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+i",
+    "command": "-emojisense.quickEmojitextTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+i alt+e",
+    "command": "emojisense.quickEmojitext",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "-emojisense.quickEmojitext",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+space up",
+    "command": "workbench.action.focusAboveGroup"
+  },
+  {
+    "key": "ctrl+k ctrl+up",
+    "command": "-workbench.action.focusAboveGroup"
+  },
+  {
+    "key": "ctrl+space down",
+    "command": "workbench.action.focusBelowGroup"
+  },
+  {
+    "key": "ctrl+k ctrl+down",
+    "command": "-workbench.action.focusBelowGroup"
+  },
+  {
+    "key": "ctrl+space left",
+    "command": "workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "ctrl+k ctrl+left",
+    "command": "-workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "ctrl+space right",
+    "command": "workbench.action.focusRightGroup"
+  },
+  {
+    "key": "ctrl+k ctrl+right",
+    "command": "-workbench.action.focusRightGroup"
+  },
+  {
+    "key": "ctrl+alt+left",
+    "command": "-workbench.action.moveEditorToPreviousGroup"
+  },
+  {
+    "key": "ctrl+shift+i ctrl+shift+i",
+    "command": "workbench.action.tasks.runTask"
+  },
+  {
+    "key": "ctrl+shift+v up",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+shift+v down",
+    "command": "workbench.action.navigateDown"
+  },
+  {
+    "key": "ctrl+shift+v left",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+shift+v right",
+    "command": "workbench.action.navigateRight"
+  }
+]
