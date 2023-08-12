@@ -19,7 +19,8 @@
         "editor.matchBrackets": "near",
         "files.trimTrailingWhitespace": true,
         "files.trimFinalNewlines": true,
-        "editor.autoClosingOvertype": "always"
+        "editor.autoClosingOvertype": "always",
+        "editor.defaultFormatter": "betterthantomorrow.calva"
     },
     "auto-close-tag.excludedTags": [
       "area",
@@ -147,6 +148,7 @@
     "calva.paredit.killAlsoCutsToClipboard": true,
     "calva.showCalvaSaysOnStart": false,
     "calva.showDocstringInParameterHelp": true,
+    "calva.fmt.keepCommentTrailParenOnOwnLine": true,
     "clojure.trace.server": "messages",
     "editor.bracketPairColorization.enabled": true,
     "editor.detectIndentation": false,
@@ -195,7 +197,7 @@
       "maxLength": 50,
       "maxDepth": 10
     },
-    "calva.autoOpenREPLWindow": false,
+    "calva.autoOpenREPLWindow": true,
     "settingsSync.ignoredSettings": [
       "editor.fontSize"
     ],
@@ -259,5 +261,6 @@
       "language-julia.interrupt"
     ],
     "julia.symbolCacheDownload": true,
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "diffEditor.renderSideBySide": false
 }

@@ -203,19 +203,21 @@
     "command": "workbench.action.tasks.runTask"
   },
   {
-    "key": "ctrl+shift+v up",
-    "command": "workbench.action.navigateUp"
+    "key": "ctrl+space =",
+    "command": "workbench.action.increaseViewSize"
   },
   {
-    "key": "ctrl+shift+v down",
-    "command": "workbench.action.navigateDown"
+    "key": "ctrl+space -",
+    "command": "workbench.action.decreaseViewSize"
   },
   {
-    "key": "ctrl+shift+v left",
-    "command": "workbench.action.navigateLeft"
+    "key": "ctrl+k ctrl+s",
+    "command": "git.stageSelectedRanges",
+    "when": "isInDiffEditor && !operationInProgress"
   },
   {
-    "key": "ctrl+shift+v right",
-    "command": "workbench.action.navigateRight"
+    "key": "ctrl+k ctrl+alt+s",
+    "command": "-git.stageSelectedRanges",
+    "when": "isInDiffEditor && !operationInProgress"
   }
 ]
