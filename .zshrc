@@ -164,7 +164,6 @@ function work
     echo "Starting work..."
     cd $WORK_FOLDER
     code
-    smerge
     tmux new -d 'google-chrome'
     tmux new -d 'slack'
     tmux new -s work
@@ -197,6 +196,13 @@ function kill-java
         kill $id
     done
 }
+
+# VEGH project system booter
+function boot-vegh
+{
+  rm -f ./.overmind.sock && script/start.sh
+}
+
 
 # direnv hookup
 eval "$(direnv hook zsh)"
