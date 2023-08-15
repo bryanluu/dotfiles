@@ -219,5 +219,27 @@
     "key": "ctrl+k ctrl+alt+s",
     "command": "-git.stageSelectedRanges",
     "when": "isInDiffEditor && !operationInProgress"
+  },
+  {
+    "key": "ctrl+alt+c ctrl+alt+c",
+    "command": "calva.connect",
+    "when": "!calva:connected && calva:keybindingsEnabled && workspaceFolderCount > 0"
+  },
+  {
+    "key": "ctrl+alt+c ctrl+alt+c",
+    "command": "-calva.connect",
+    "when": "calva:keybindingsEnabled && workspaceFolderCount > 0"
+  },
+  {
+    "key": "ctrl+escape",
+    "command": "workbench.action.quit"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "-workbench.action.quit"
+  },
+  {
+    "key": "ctrl+shift+g t",
+    "command": "toggle.diff.renderSideBySide"
   }
 ]
