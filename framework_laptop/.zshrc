@@ -200,7 +200,7 @@ function kill-java
 # VEGH project system booter
 function boot-vegh
 {
-  rm -f ./.overmind.sock && script/start.sh
+  vegh && rm -f ./.overmind.sock && script/start.sh
 }
 
 
