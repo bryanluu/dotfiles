@@ -197,7 +197,7 @@
       "maxLength": 50,
       "maxDepth": 10
     },
-    "calva.autoOpenREPLWindow": true,
+    "calva.autoOpenREPLWindow": false,
     "settingsSync.ignoredSettings": [
       "editor.fontSize"
     ],
@@ -262,5 +262,7 @@
     ],
     "julia.symbolCacheDownload": true,
     "window.menuBarVisibility": "toggle",
-    "diffEditor.renderSideBySide": false
+    "editor.minimap.enabled": false,
+    "files.autoSave": "onWindowChange",
+    "diffEditor.experimental.useVersion2": true
 }
