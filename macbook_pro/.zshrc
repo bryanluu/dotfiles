@@ -71,7 +71,9 @@ OH_MY_ZSH_PLUGIN_REPOS="$HOME/.oh-my-zsh/plugins"
 [[ -r "$OH_MY_ZSH_PLUGIN_REPOS/znap/znap.zsh" ]] ||
     git clone --depth 1 -- \
         https://github.com/marlonrichert/zsh-snap.git "$OH_MY_ZSH_PLUGIN_REPOS/znap"
-source ~/Repos/znap/znap.zsh  # Start Znap
+source "$OH_MY_ZSH_PLUGIN_REPOS/znap/znap.zsh"  # Start Znap
+zstyle ':znap:*' repos-dir "$OH_MY_ZSH_PLUGIN_REPOS"
+
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
