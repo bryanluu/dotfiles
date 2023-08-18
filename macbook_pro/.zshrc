@@ -64,15 +64,15 @@ ZSH_THEME="agnoster"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+export ZSH_CUSTOM="$ZSH/custom"
 
 
-OH_MY_ZSH_PLUGIN_REPOS="$HOME/.oh-my-zsh/plugins"
 # Download Znap, if it's not there yet.
-[[ -r "$OH_MY_ZSH_PLUGIN_REPOS/znap/znap.zsh" ]] ||
+[[ -r "$ZSH_CUSTOM/plugins/znap/znap.zsh" ]] ||
     git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git "$OH_MY_ZSH_PLUGIN_REPOS/znap"
-source "$OH_MY_ZSH_PLUGIN_REPOS/znap/znap.zsh"  # Start Znap
-zstyle ':znap:*' repos-dir "$OH_MY_ZSH_PLUGIN_REPOS"
+        https://github.com/marlonrichert/zsh-snap.git "$ZSH_CUSTOM/plugins/znap"
+source "$ZSH_CUSTOM/plugins/znap/znap.zsh"  # Start Znap
+zstyle ':znap:*' repos-dir "$ZSH_CUSTOM/plugins"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
