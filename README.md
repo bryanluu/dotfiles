@@ -11,6 +11,7 @@ Configuration from my 2022 Framework Laptop 11 for Clojure development (mostly c
   - Joyride settings
 - Shell
   - `.zshrc` terminal config
+  - `.gitignore` useful gitignore
 
 ## Old Macbook Pro
 Configuration from my old 2012 Macbook Pro
@@ -18,3 +19,7 @@ Configuration from my old 2012 Macbook Pro
   - `.zshrc` terminal config
   - `.bash_profile` bash config
   - `.bashrc` more bash config
+- Karabiner
+  - `karabiner.json` keyboard settings
+- BetterSnapTool
+  - `com.hegenberg.BetterSnapTool.plist` BST settings for import/export (see [this](https://community.folivora.ai/t/transfer-bst-preferences-snap-areas-to-new-mac/31253/2))
