@@ -74,7 +74,6 @@ OH_MY_ZSH_PLUGIN_REPOS="$HOME/.oh-my-zsh/plugins"
 source "$OH_MY_ZSH_PLUGIN_REPOS/znap/znap.zsh"  # Start Znap
 zstyle ':znap:*' repos-dir "$OH_MY_ZSH_PLUGIN_REPOS"
 
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -83,6 +82,7 @@ zstyle ':znap:*' repos-dir "$OH_MY_ZSH_PLUGIN_REPOS"
 plugins=(
   git
   asdf
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
