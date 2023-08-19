@@ -74,6 +74,9 @@ export ZSH_CUSTOM="$ZSH/custom"
 source "$ZSH_CUSTOM/plugins/znap/znap.zsh"  # Start Znap
 zstyle ':znap:*' repos-dir "$ZSH_CUSTOM/plugins"
 
+# choose a pretty color for ZSH suggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=4"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -82,6 +85,7 @@ zstyle ':znap:*' repos-dir "$ZSH_CUSTOM/plugins"
 plugins=(
   git
   asdf
+  zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
