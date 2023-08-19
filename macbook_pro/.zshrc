@@ -91,6 +91,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# ZSH autocompletions
+znap source marlonrichert/zsh-autocomplete
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
