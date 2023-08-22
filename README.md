@@ -1,6 +1,11 @@
 # dotfiles
 This repo contains my configuration settings for development
 
+## Macbook Pro
+Configuration from my 2023 Macbook Pro for work + life
+- `.zshrc` terminal config
+- `.gitignore` useful gitignore
+
 ## Framework Laptop
 Configuration from my 2022 Framework Laptop 11 for Clojure development (mostly copied https://github.com/seancorfield/vscode-calva-setup):
 - VS-Code
