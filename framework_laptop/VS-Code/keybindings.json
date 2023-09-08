@@ -37,10 +37,6 @@
     "command": "workbench.action.moveEditorToRightGroup"
   },
   {
-    "key": "ctrl+alt+k ctrl+alt+t",
-    "command": "calva.toggleBetweenImplAndTest"
-  },
-  {
     "key": "ctrl+alt+space j",
     "command": "joyride.runUserScript",
     "args": "javadoc.cljs"
@@ -253,5 +249,27 @@
   {
     "key": "ctrl+shift+g ctrl+d",
     "command": "git.clean"
+  },
+  {
+    "key": "ctrl+shift+t ctrl+shift+t",
+    "command": "workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "-workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "ctrl+alt+f",
+    "command": "calva-fmt.alignCurrentForm",
+    "when": "calva:keybindingsEnabled && editorTextFocus && !editorReadOnly && !hasOtherSuggestions && !suggestWidgetVisible && editorLangId == 'clojure'"
+  },
+  {
+    "key": "ctrl+alt+l",
+    "command": "-calva-fmt.alignCurrentForm",
+    "when": "calva:keybindingsEnabled && editorTextFocus && !editorReadOnly && !hasOtherSuggestions && !suggestWidgetVisible && editorLangId == 'clojure'"
+  },
+  {
+    "key": "alt+t",
+    "command": "calva.toggleBetweenImplAndTest"
   }
 ]

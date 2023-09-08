@@ -92,7 +92,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///home/bluu/.vscode/extensions/atlassian.atlascode-3.0.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/bluu/.vscode/extensions/atlassian.atlascode-3.0.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -264,5 +264,7 @@
     "window.menuBarVisibility": "toggle",
     "editor.minimap.enabled": false,
     "files.autoSave": "onWindowChange",
-    "diffEditor.experimental.useVersion2": true
+    "diffEditor.experimental.useVersion2": true,
+    "diffEditor.renderSideBySide": false,
+    "gitlens.mode.active": "review"
 }
