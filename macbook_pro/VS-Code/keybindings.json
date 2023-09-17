@@ -1,0 +1,47 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+alt+space j",
+    "command": "joyride.runUserScript",
+    "args": "javadoc.cljs"
+  },
+  {
+    "key": "ctrl+alt+space /",
+    "command": "joyride.runUserScript",
+    "args": "clojuredocs.cljs"
+  },
+  {
+    "key": "ctrl+alt+b q",
+    "command": "joyride.runUserScript",
+    "args": "qa_repl.cljs"
+  },
+  {
+    "key": "ctrl+alt+b p",
+    "command": "joyride.runUserScript",
+    "args": "prod_repl.cljs"
+  },
+  {
+    "key": "ctrl+alt+n ctrl+alt+s",
+    "command": "joyride.runUserScript",
+    "args": "ns.cljs"
+  },
+  {
+    "key": "ctrl+alt+d ctrl+alt+t",
+    "command": "joyride.runUserScript",
+    "args": "tap.cljs"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "joyride.runUserScript",
+    "args": "ignore_form.cljs",
+    "when": "!editorHasSelection && editorTextFocus && !editorReadOnly && editorLangId =~ /clojure|scheme|lisp/"
+  },
+  {
+    "key": "ctrl+alt+c z",
+    "command": "clojureLsp.refactor.cleanNs"
+  },
+  {
+    "key": "alt+t",
+    "command": "calva.toggleBetweenImplAndTest"
+  },
+]
