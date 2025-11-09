@@ -150,59 +150,8 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias tt="trash-put -v"
 
 # Work folders
-export WORK_FOLDER="$HOME/Work/OPEN-Technologies"
+export WORK_FOLDER="$HOME/Work/" # set your work path folder here
 # alias work="cd $WORK_FOLDER"
-alias PowerPlots="cd ~/.julia/dev/PowerPlots"
-alias boids="cd ~/Programming/Projects/boids"
-alias maze="cd ~/Arduino/maze"
-alias grid="cd $HOME/Work/OPEN-Technologies/GRID/grid"
-alias vegh="cd $HOME/Work/OPEN-Technologies/VEGH/vegh-saskatoon-skeleton/"
-
-# OPEN Technologies shortcuts
-function work
-{
-    echo "Starting work..."
-    cd $WORK_FOLDER
-    code
-    tmux new -d 'google-chrome'
-    tmux new -d 'slack'
-    tmux new -s work
-    return 0
-}
-
-# create work branch
-function work-on
-{
-    og_dir=$(pwd)
-    cd "$HOME/Work/OPEN-Technologies/open-back-office/monday-manager"
-    make branch id="$1"
-    cd "$og_dir"
-}
-
-# kill kaocha test watchers
-function kill-kaocha
-{
-    for id in $(ps -aux | grep -P "^bluu\s+[0-9]+.*\skaocha\.runner" | grep -oP "(?<=^bluu)\s+([0-9]+)\s"); do
-        echo $id
-        kill $id
-    done
-}
-
-# kill java processes (e.g. orphaned Clojure processes)
-function kill-java
-{
-    for id in $(ps -aux | grep -P "^bluu\s+[0-9]+.*\s/usr/bin/java" | grep -oP "(?<=^bluu)\s+([0-9]+)\s"); do
-        echo $id
-        kill $id
-    done
-}
-
-# VEGH project system booter
-function boot-vegh
-{
-  vegh && rm -f ./.overmind.sock && script/start.sh
-}
-
 
 # direnv hookup
 eval "$(direnv hook zsh)"
