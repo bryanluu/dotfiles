@@ -1,0 +1,13 @@
+[Unit]
+Description=Automatically connect Tailscale after WireGuard
+After=tailscaled.service
+Requires=tailscaled.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tailscale up
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
