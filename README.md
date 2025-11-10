@@ -7,16 +7,17 @@ Configuration from my 2023 Macbook Pro for work + life
 - `.gitignore` useful gitignore
 
 ## Framework Laptop
-Configuration from my 2022 Framework Laptop 11 for Clojure development (mostly copied https://github.com/seancorfield/vscode-calva-setup):
-- VS-Code
-  - `settings.json`
-  - `keybindings.json`
-- Clojure
-  - Calva settings
-  - Joyride settings
-- Shell
-  - `.zshrc` terminal config
-  - `.gitignore` useful gitignore
+Configuration from my 2022 Framework Laptop 11 to match HOME directory:
+- `config/`
+  - `Code/User/` VS-Code config
+    - `settings.json` user settings
+    - `keybindings.json` user keybindings
+  - Clojure config (mostly copied https://github.com/seancorfield/vscode-calva-setup):
+    - `calva/config.edn` Calva settings
+    - `joyride/` Joyride settings
+- `.zshrc` terminal config
+- `.gitignore` useful gitignore
+- `.tmux.conf` tmux config
 
 ## Old Macbook Pro
 Configuration from my old 2012 Macbook Pro
