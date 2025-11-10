@@ -1,8 +1,32 @@
 # dotfiles
 This repo contains my configuration settings for development
 
+## Installation
+- Ensure GNU [`stow`](https://www.gnu.org/software/stow/) is installed.
+- Ensure this repo is installed on the machine somewhere consistent (e.g. `~/.dotfiles`):
+
+```bash
+git clone git@github.com:bryanluu/dotfiles.git
+```
+- Navigate to the desired configuration folder. E.g. for my Framework Laptop
+```bash
+cd framework_laptop
+```
+- Dry-run `stow` to test the configuration install:
+```bash
+stow -nv . --target=$HOME
+```
+- If all looks good, run it for real:
+```bash
+stow -v . --target=$HOME
+```
+
 ## Macbook Pro
-Configuration from my 2023 Macbook Pro for work + life
+Configuration from my 2023 Macbook Pro for work + life'
+- `config/`
+  - `Code/User/` VS-Code config
+    - `settings.json` user settings
+    - `keybindings.json` user keybindings
 - `.zshrc` terminal config
 - `.gitignore` useful gitignore
 
@@ -18,14 +42,3 @@ Configuration from my 2022 Framework Laptop 11 to match HOME directory:
 - `.zshrc` terminal config
 - `.gitignore` useful gitignore
 - `.tmux.conf` tmux config
-
-## Old Macbook Pro
-Configuration from my old 2012 Macbook Pro
-- Shell
-  - `.zshrc` terminal config
-  - `.bash_profile` bash config
-  - `.bashrc` more bash config
-- Karabiner
-  - `karabiner.json` keyboard settings
-- BetterSnapTool
-  - `com.hegenberg.BetterSnapTool.plist` BST settings for import/export (see [this](https://community.folivora.ai/t/transfer-bst-preferences-snap-areas-to-new-mac/31253/2))
