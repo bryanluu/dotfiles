@@ -9,6 +9,8 @@
 **/*scratch*/
 **/.rebel_readline_history
 .portal/
+dump.rdb
+.vscode/
 
 # General
 .DS_Store
