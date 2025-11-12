@@ -21,8 +21,14 @@ stow -nv . --target=$HOME
 stow -v . --target=$HOME
 ```
 
+## Framework Desktop
+Configuration from my 2025 Framework Desktop:
+- `.zshrc` terminal config
+- `.tmux.conf` tmux config
+- `.gitconfig` git aliases
+
 ## Macbook Pro
-Configuration from my 2023 Macbook Pro for work + life'
+Configuration from my 2023 Macbook Pro for work + life:
 - `config/`
   - `Code/User/` VS-Code config
     - `settings.json` user settings
