@@ -1,0 +1,10 @@
+# Environment
+.envrc
+.tool-versions
+
+# Editors
+.vscode/
+.idea/
+
+# Windows
+Thumbs.db
