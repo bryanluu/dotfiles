@@ -161,3 +161,8 @@ eval $(thefuck --alias)
 
 # hookup homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/bluu/.lmstudio/bin"
+# End of LM Studio CLI section
+
