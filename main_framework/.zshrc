@@ -110,5 +110,7 @@ fi
 alias refresh=". ~/.zshrc"
 # Make parent directories
 alias mkdir="mkdir -pv"
+# Wezterm shortcut
+alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
