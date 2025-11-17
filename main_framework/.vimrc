@@ -14,10 +14,10 @@ filetype indent on
 set number
 
 " Highlight cursor line underneath the cursor horizontally.
-set cursorline
+" set cursorline
 
 " Highlight cursor line underneath the cursor vertically.
-set cursorcolumn
+" set cursorcolumn
 
 " Set shift width to 4 spaces.
 set shiftwidth=4
@@ -61,6 +61,9 @@ set hlsearch
 
 " Set the commands to save in history default number is 20.
 set history=1000
+
+" Set to use clipboard for all yanks
+set clipboard=unnamedplus
 
 " Set up vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
