@@ -114,3 +114,12 @@ alias mkdir="mkdir -pv"
 alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Add Go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/bluu/.lmstudio/bin"
+# End of LM Studio CLI section
+
