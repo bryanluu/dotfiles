@@ -123,3 +123,5 @@ export PATH=$PATH:$HOME/go/bin
 export PATH="$PATH:/home/bluu/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# Bitwarden SSH Agent
+export SSH_AUTH_SOCK=/home/bluu/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
