@@ -1,7 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.color_scheme = 'MaterialDarker'
+config.color_scheme = 'Gnometerm (terminal.sexy)'
+
 config.default_cursor_style = 'BlinkingBar'
 config.animation_fps = 1
 config.cursor_blink_ease_in = 'Constant'
