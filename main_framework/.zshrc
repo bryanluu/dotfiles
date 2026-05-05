@@ -113,6 +113,10 @@ alias mkdir="mkdir -pv"
 # Wezterm shortcut
 alias wezterm='flatpak run org.wezfurlong.wezterm'
 
+# TTG Docker
+export MSSQL_SA_PASSWORD=29vAY%V7
+export TTG_PSQL_PASSWORD=29vAY%V7
+
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Add Go
@@ -129,3 +133,9 @@ export SSH_AUTH_SOCK=/home/bluu/.var/app/com.bitwarden.desktop/data/.bitwarden-s
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# opencode
+export PATH=/home/bluu/.opencode/bin:$PATH
+
+# Jupyter
+export PATH="$HOME/.local/bin:$PATH"
