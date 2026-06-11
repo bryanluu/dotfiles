@@ -1,0 +1,14 @@
+[Unit]
+Description=Start ProtonVPN on login (after GNOME session is ready)
+After=graphical-session-pre.target
+
+[Service]
+Type=exec
+# Small delay to ensure GTK + session D-Bus are fully ready
+ExecStartPre=/bin/sleep 2
+ExecStart=/usr/bin/protonvpn-app --start-minimized
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

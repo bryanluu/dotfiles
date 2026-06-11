@@ -1,0 +1,11 @@
+[Unit]
+Description=Auto-start Bitwarden
+After=graphical-session.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/flatpak run com.bitwarden.desktop
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
