@@ -139,3 +139,6 @@ export PATH=/home/bluu/.opencode/bin:$PATH
 
 # Jupyter
 export PATH="$HOME/.local/bin:$PATH"
+
+# Quick fix for `code` issues on Wayland
+alias code='code --ozone-platform=wayland'
