@@ -58,5 +58,5 @@
   "window.menuBarVisibility": "toggle",
   "editor.fontSize": 14,
   "explorer.confirmDragAndDrop": false,
-  "workbench.colorTheme": "Default Dark Modern"
+  "workbench.colorTheme": "Dark Modern"
 }
