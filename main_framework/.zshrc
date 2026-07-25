@@ -110,8 +110,6 @@ fi
 alias refresh=". ~/.zshrc"
 # Make parent directories
 alias mkdir="mkdir -pv"
-# Wezterm shortcut
-alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 # TTG Docker
 export MSSQL_SA_PASSWORD=29vAY%V7
