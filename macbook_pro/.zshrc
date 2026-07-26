@@ -9,6 +9,8 @@ export ZSH=$HOME/.oh-my-zsh
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
+export AGNOSTER_CONTEXT_BG=24
+export AGNOSTER_CONTEXT_FG=255
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -128,24 +130,9 @@ alias refresh=". ~/.zshrc"
 alias clj-repl="clojure -M:repl/rebel:inspect/portal-cli"
 
 # Work folders
-export SCHOOL_FOLDER="$HOME/Library/CloudStorage/GoogleDrive-loc.bryan.luu@gmail.com/My Drive/Academic/Formal Education/BCIT/Sustainable Business Leadership - Advanced Certificate"
-export WORK_FOLDER="$HOME/Work/OPEN-Technologies"
+# export SCHOOL_FOLDER="$HOME/"
+# export WORK_FOLDER="$HOME/Work/OPEN-Technologies"
 # alias work="cd $WORK_FOLDER"
-alias grid="cd $HOME/Work/OPEN-Technologies/GRID/grid"
-alias vegh="cd $HOME/Work/OPEN-Technologies/VEGH/vegh-saskatoon-skeleton/"
-alias wnm="cd $HOME/Work/OPEN-Technologies/GRID/weather_normalization_model"
-
-# OPEN Technologies shortcuts
-function work
-{
-    echo "Starting work..."
-    cd $WORK_FOLDER
-    code
-    # start up Google Work profile
-    open -a "Google Chrome" --args --profile-directory="Profile 4"
-    # tmux new -s work
-    return 0
-}
 
 # Shell Integration
 # see https://iterm2.com/documentation-shell-integration.html
