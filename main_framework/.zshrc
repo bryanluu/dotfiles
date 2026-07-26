@@ -111,10 +111,6 @@ alias refresh=". ~/.zshrc"
 # Make parent directories
 alias mkdir="mkdir -pv"
 
-# TTG Docker
-export MSSQL_SA_PASSWORD=29vAY%V7
-export TTG_PSQL_PASSWORD=29vAY%V7
-
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Add Go
