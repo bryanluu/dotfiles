@@ -1,0 +1,19 @@
+[Unit]
+Description=Open WebUI
+After=network-online.target ollama.service
+Wants=network-online.target
+
+[Container]
+Image=ghcr.io/open-webui/open-webui:main
+ContainerName=open-webui
+PublishPort=8080:8080
+Volume=open-webui:/app/backend/data:Z
+Environment=OLLAMA_BASE_URL=http://host.containers.internal:11434
+AutoUpdate=registry
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
