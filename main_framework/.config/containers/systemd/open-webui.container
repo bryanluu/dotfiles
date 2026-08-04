@@ -10,6 +10,7 @@ PublishPort=8080:8080
 Volume=open-webui:/app/backend/data:Z
 Environment=OLLAMA_BASE_URL=http://host.containers.internal:11434
 AutoUpdate=registry
+Network=ai-net
 
 [Service]
 Restart=always
