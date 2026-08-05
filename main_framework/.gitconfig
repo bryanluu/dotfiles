@@ -26,3 +26,5 @@
 	repo = /home/bluu/.oh-my-zsh/plugins/zsh-autocomplete
 	repo = /home/bluu/.oh-my-zsh/plugins/zsh-autosuggestions
 	repo = /home/bluu/.oh-my-zsh/plugins/zsh-syntax-highlighting
+[safe]
+	directory = /home/bluu/Programming/Tinkering/local-AI/searxng
