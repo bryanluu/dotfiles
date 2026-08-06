@@ -42,13 +42,34 @@ Configuration from my 2025 Framework Desktop (`main_framework/`):
 - `systemd-system-configs/` — root-owned system files, tracked for reference only (excluded from stow via `.stow-local-ignore`)
 
 ### Applying the Ollama service override
-This lives outside `$HOME`, so `stow` can't symlink it — apply manually on a fresh machine:
+This lives outside `$HOME`, so `stow` can't symlink it. It's linked in via a manually-created symlink so edits here take effect on the next `daemon-reload`, with no re-copy step needed — but this requires an extra SELinux step on Fedora, since files under `/etc/systemd/system/` need the `systemd_unit_file_t` context, which a symlinked file from `$HOME` won't have by default.
+
 ```bash
-sudo mkdir -p /etc/systemd/system/ollama.service.d
+sudo ln -s ~/.dotfiles/main_framework/systemd-system-configs/ollama.service.d/override.conf \
+  /etc/systemd/system/ollama.service.d/override.conf
+
+# Required on Fedora (SELinux enforcing): relabel the target so systemd is allowed to read it
+sudo semanage fcontext -a -t systemd_unit_file_t \
+  "/home/$USER/.dotfiles/main_framework/systemd-system-configs/ollama.service.d/override.conf"
+sudo restorecon -v ~/.dotfiles/main_framework/systemd-system-configs/ollama.service.d/override.conf
+
+sudo systemctl daemon-reload
+sudo systemctl restart ollama
+```
+
+Verify it actually applied (SELinux denials fail silently — the service still starts, just without the override):
+```bash
+sudo ausearch -m avc -ts recent   # should return nothing
+sudo ss -tlnp | grep 11434        # should show *:11434, not 127.0.0.1:11434
+```
+
+**Simpler alternative** (no SELinux step, but edits require re-copying):
+```bash
 sudo cp systemd-system-configs/ollama.service.d/override.conf /etc/systemd/system/ollama.service.d/
 sudo systemctl daemon-reload
 sudo systemctl restart ollama
 ```
+
 This override enables the iGPU (Vulkan), binds Ollama to `0.0.0.0` so containers can reach it, sets a longer model load timeout for large models, and deprioritizes Ollama's CPU/IO usage so it doesn't starve the rest of the system.
 
 ## Macbook Pro
@@ -82,3 +103,4 @@ Configuration from my 2022 Framework Laptop 11 to match HOME directory (`framewo
   - Clojure config (mostly copied from https://github.com/seancorfield/vscode-calva-setup):
     - `calva/config.edn` Calva settings
     - `joyride/` Joyride settings
+
