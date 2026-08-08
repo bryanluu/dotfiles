@@ -131,3 +131,25 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Quick fix for `code` issues on Wayland
 alias code='code --ozone-platform=wayland'
+
+# Drop-in clipboard pipe target, e.g. `echo "hello" | term-copy`.
+# Adapts to the environment automatically:
+#   - graphical/Wayland session -> calls the real wl-copy binary
+#   - headless/SSH, inside tmux -> OSC 52 wrapped in tmux's DCS passthrough
+#     format (required - tmux doesn't reliably forward bare OSC 52)
+#   - headless/SSH, no tmux     -> plain OSC 52 sequence
+term-copy() {
+  if [ -n "$WAYLAND_DISPLAY" ]; then
+    command wl-copy "$@"  # bypass this function, call the real binary
+    return
+  fi
+  local data
+  data=$(base64 | tr -d '\n')  # -w0 equivalent: strip newlines base64 adds,
+                                 # which would otherwise break the sequence
+  if [ -n "$TMUX" ]; then
+    printf '\033Ptmux;\033\033]52;c;%s\007\033\\' "$data"
+  else
+    printf '\033]52;c;%s\a' "$data"
+  fi
+}
+

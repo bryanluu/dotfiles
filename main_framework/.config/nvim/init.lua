@@ -48,6 +48,17 @@ vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.smartindent = true -- Smartly indent a new line
 vim.opt.hlsearch = false -- Don't highlight search results by default
 
+-- OSC 52 clipboard: syncs yank/paste with the system clipboard over SSH,
+-- without needing a Wayland/X11 display server. Uses Neovim's built-in
+-- provider (0.10+) rather than a plugin, since nvim-osc52 is now obsolete
+-- per its own README (see :h clipboard-osc52 for details)
+vim.g.clipboard = "osc52"
+
+-- Routes plain y/d/p through the "+" register automatically, so OSC 52
+-- fires on every yank/paste without needing "+y / "+p explicitly
+vim.opt.clipboard = "unnamedplus"
+
+
 -- A basic keymap to save the file
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 
