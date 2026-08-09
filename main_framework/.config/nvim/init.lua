@@ -52,7 +52,12 @@ vim.opt.hlsearch = false -- Don't highlight search results by default
 -- without needing a Wayland/X11 display server. Uses Neovim's built-in
 -- provider (0.10+) rather than a plugin, since nvim-osc52 is now obsolete
 -- per its own README (see :h clipboard-osc52 for details)
-vim.g.clipboard = "osc52"
+-- Only force OSC 52 when connected over SSH; locally, let Neovim's
+-- normal auto-detection find wl-copy/wl-paste via a running Wayland
+-- session instead, which is more reliable than OSC 52 when available
+if vim.env.SSH_TTY then
+  vim.g.clipboard = "osc52"
+end
 
 -- Routes plain y/d/p through the "+" register automatically, so OSC 52
 -- fires on every yank/paste without needing "+y / "+p explicitly
