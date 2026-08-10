@@ -77,6 +77,8 @@ Configuration from my 2023 Macbook Pro for work + life (`macbook_pro/`):
 - `.zshrc` terminal config
 - `.vimrc` Vim config
 - `.tmux.conf` tmux config
+- `.wezterm.lua` WezTerm config (replaces iTerm2 — avoids Shell Integration
+  conflicts with OSC52 clipboard passthrough over SSH/tmux)
 - `.gitignore` useful gitignore
 - `.stow-local-ignore` excludes files from stow symlinking
 - `.config/`
