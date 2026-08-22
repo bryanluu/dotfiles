@@ -72,6 +72,26 @@ sudo systemctl restart ollama
 
 This override enables the iGPU (Vulkan), binds Ollama to `0.0.0.0` so containers can reach it, sets a longer model load timeout for large models, and deprioritizes Ollama's CPU/IO usage so it doesn't starve the rest of the system.
 
+### Starting the GUI (main-framework runs headless by default)
+Since `main-framework` normally boots headless, if you need the GNOME desktop:
+
+- Start the GUI immediately (no reboot):
+```bash
+  sudo systemctl isolate graphical.target
+```
+- Make GUI the default boot target going forward:
+```bash
+  sudo systemctl set-default graphical.target
+```
+- Revert to headless boot:
+```bash
+  sudo systemctl set-default multi-user.target
+```
+- Check current default:
+```bash
+  systemctl get-default
+```
+
 ## Macbook Pro
 Configuration from my 2023 Macbook Pro for work + life (`macbook_pro/`):
 - `.zshrc` terminal config
