@@ -5,3 +5,4 @@ if vim.env.SSH_TTY then
   vim.g.clipboard = "osc52"
 end
 vim.opt.clipboard = "unnamedplus"
+vim.opt.winbar = "%=%m %f"
