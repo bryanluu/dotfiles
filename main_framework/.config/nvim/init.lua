@@ -1,6 +1,5 @@
 -- ~/.config/nvim/init.lua
 
--- LazyVim setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -8,68 +7,159 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "tiagovla/tokyodark.nvim", -- Theme
-  "nvim-tree/nvim-tree.lua", -- File explorer
-  "nvim-treesitter/nvim-treesitter", -- Better syntax highlighting
-  -- "nvim-cmp", -- Autocompletion with LSP support
-  'hrsh7th/nvim-cmp',
-  dependencies = {
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    -- Snippet engine (choose one)
-    {'hrsh7th/cmp-vsnip', 'hrsh7th/vim-vsnip'},
-    -- Or
-    -- {'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip'},
+  "tiagovla/tokyodark.nvim",
+  "nvim-tree/nvim-tree.lua",
+
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "typescript", "tsx", "javascript", "json", "html", "css", "lua" },
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+    end,
   },
-  -- "nvim-lspconfig", -- Common LSP configs
-  -- "telescope.nvim", -- Fuzzy Finder
-  'nvim-telescope/telescope.nvim', tag = '0.1.9',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  -- "gitsigns.nvim", -- Show Git status metadata
+  "windwp/nvim-ts-autotag", -- auto-close/rename JSX & HTML tags
+
+  -- LSP: Mason installs the servers, lspconfig wires them into nvim
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
+
+  -- Formatting (Prettier etc.) run on save
+  "stevearc/conform.nvim",
+
+  -- Completion
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/vim-vsnip",
+    },
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.9",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  "lewis6991/gitsigns.nvim",
 })
 
-vim.lsp.enable('ccls')
+-- ============ Mason / LSP setup ============
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "ts_ls", "tailwindcss", "cssls", "html", "eslint" },
+})
 
--- Set some basic options
-vim.opt.nu = true -- Enable line numbers
-vim.opt.relativenumber = false -- Enable relative line numbers (super useful for jumping!)
-vim.opt.tabstop = 4 -- Number of spaces a tab counts for
-vim.opt.shiftwidth = 4 -- Number of spaces to use for each step of indentation
-vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.opt.smartindent = true -- Smartly indent a new line
-vim.opt.hlsearch = false -- Don't highlight search results by default
+-- Give cmp_nvim_lsp's extra completion capabilities to every LSP server
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- OSC 52 clipboard: syncs yank/paste with the system clipboard over SSH,
--- without needing a Wayland/X11 display server. Uses Neovim's built-in
--- provider (0.10+) rather than a plugin, since nvim-osc52 is now obsolete
--- per its own README (see :h clipboard-osc52 for details)
--- Only force OSC 52 when connected over SSH; locally, let Neovim's
--- normal auto-detection find wl-copy/wl-paste via a running Wayland
--- session instead, which is more reliable than OSC 52 when available
+local on_attach = function(_, bufnr)
+  local opts = { buffer = bufnr }
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+end
+
+local lspconfig = require("lspconfig")
+
+lspconfig.ts_ls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
+lspconfig.cssls.setup({ capabilities = capabilities, on_attach = on_attach })
+lspconfig.html.setup({ capabilities = capabilities, on_attach = on_attach })
+lspconfig.eslint.setup({
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
+
+-- ============ Formatting on save (Prettier) ============
+require("conform").setup({
+  formatters_by_ft = {
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    json = { "prettier" },
+    css = { "prettier" },
+    html = { "prettier" },
+  },
+  format_on_save = {
+    timeout_ms = 1000,
+    lsp_fallback = true,
+  },
+})
+
+-- ============ Completion (cmp) ============
+local cmp = require("cmp")
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.mapping.select_next_item(),
+    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+  }),
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "vsnip" },
+  }, {
+    { name = "buffer" },
+    { name = "path" },
+  }),
+})
+
+-- ============ Basic options ============
+vim.opt.nu = true
+vim.opt.relativenumber = false
+vim.opt.tabstop = 2          -- 2 spaces is the web-dev convention (JS/TS/JSON/HTML/CSS)
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.hlsearch = false
+
+-- ============ Clipboard (unchanged from your setup) ============
 if vim.env.SSH_TTY then
   vim.g.clipboard = "osc52"
 end
-
--- Routes plain y/d/p through the "+" register automatically, so OSC 52
--- fires on every yank/paste without needing "+y / "+p explicitly
 vim.opt.clipboard = "unnamedplus"
 
-
--- A basic keymap to save the file
+-- ============ Keymaps ============
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 
--- Telescope keymaps
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
