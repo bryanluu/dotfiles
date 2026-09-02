@@ -1,0 +1,11 @@
+[Unit]
+Description=Notify if TPM2 LUKS auto-unlock fell back to passphrase this boot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/check-tpm-boot.sh
+
+[Install]
+WantedBy=multi-user.target

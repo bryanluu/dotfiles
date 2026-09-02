@@ -1,0 +1,6 @@
+[Unit]
+Description=Warn if a pending firmware update may break TPM2 auto-unlock
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/check-fwupd-pending.sh
