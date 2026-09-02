@@ -40,6 +40,7 @@ Configuration from my 2025 Framework Desktop (`main_framework/`):
 - `.gitconfig` git aliases
 - `.gitignore` useful gitignore
 - `.stow-local-ignore` excludes non-stowable files (system configs) from symlinking
+- `docs/` — reference documentation, not meant to be symlinked (e.g. `tpm2-luks-autounlock.md`)
 - `.config/`
   - `Code/User/` VS-Code config
     - `settings.json` user settings
@@ -112,6 +113,23 @@ Since `main-framework` normally boots headless, if you need the GNOME desktop:
 ```bash
   systemctl get-default
 ```
+
+### TPM2 LUKS auto-unlock + failure alerts
+
+`main-framework`'s root partition auto-unlocks via TPM2 on boot (bound to
+PCR 7 / Secure Boot state), so it can come back up over Tailscale/SSH after
+a smart-plug power cycle without a physical passphrase entry. This
+periodically breaks — most commonly after a BIOS/firmware update applied by
+`fwupd`, since those often reset Secure Boot state — requiring a physical
+unlock + reseal.
+
+Two systemd-managed checks page a phone via ntfy.sh so this doesn't get
+discovered by a failed remote reboot: one warns when a firmware update is
+staged that's likely to break auto-unlock, the other confirms after any
+boot that actually fell back to the passphrase.
+
+Full explanation, recovery steps, and reinstall checklist:
+[`docs/tpm2-luks-autounlock.md`](main_framework/docs/tpm2-luks-autounlock.md)
 
 ## Macbook Pro
 
