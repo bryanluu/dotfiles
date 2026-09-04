@@ -6,3 +6,6 @@ if vim.env.SSH_TTY then
 end
 vim.opt.clipboard = "unnamedplus"
 vim.opt.winbar = "%=%m %f"
+vim.opt.wrap = true
+vim.opt.linebreak = true -- wrap at word boundaries, not mid-word
+vim.opt.breakindent = true -- wrapped lines keep the original line's indent
