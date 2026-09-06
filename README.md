@@ -43,6 +43,7 @@ Configuration from my 2025 Framework Desktop (`main_framework/`):
 - `.claude/` Claude Code config (stowed to `~/.claude/`)
   - `CLAUDE.md` global instructions for all projects
   - `settings.json` permissions + commit/PR attribution
+  - `commands/draft-commit.md` `/draft-commit` slash command to draft a commit message for the current changes
 - `docs/` — reference documentation, not meant to be symlinked (e.g. `tpm2-luks-autounlock.md`)
 - `.config/`
   - `Code/User/` VS-Code config
