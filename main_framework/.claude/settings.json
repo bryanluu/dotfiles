@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "attribution": {
+    "commit": "Generated with Claude Code",
+    "pr": ""
+  },
+  "permissions": {
+    "ask": [
+      "Bash(web_search *)",
+      "Bash(ai_search *)"
+    ],
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git status:*)"
+    ]
+  }
+}
